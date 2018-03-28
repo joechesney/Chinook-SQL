@@ -43,13 +43,13 @@ AND Customer.Country = "Brazil";
 --15 Provide a query that shows all the Tracks, but displays no IDs. The resultant table should include the Album name, Media type and Genre.
 --16 Provide a query that shows all Invoices but includes the # of invoice line items.
 --17 Provide a query that shows total sales made by each sales agent.
--- Which sales agent made the most in sales in 2009?
--- Which sales agent made the most in sales in 2010?
--- Which sales agent made the most in sales over all?
--- Provide a query that shows the # of customers assigned to each sales agent.
--- Provide a query that shows the total sales per country. Which country's customers spent the most?
--- Provide a query that shows the most purchased track of 2013.
--- Provide a query that shows the top 5 most purchased tracks over all.
--- Provide a query that shows the top 3 best selling artists.
--- Provide a query that shows the most purchased Media Type.
--- Provide a query that shows the number tracks purchased in all invoices that contain more than one genre.
+--18 Which sales agent made the most in sales in 2009?
+--19 Which sales agent made the most in sales in 2010?
+--20 Which sales agent made the most in sales over all?
+--21 Provide a query that shows the # of customers assigned to each sales agent.
+--22 Provide a query that shows the total sales per country. Which country's customers spent the most?
+--23 Provide a query that shows the most purchased track of 2013.
+--24 Provide a query that shows the top 5 most purchased tracks over all.
+--25 Provide a query that shows the top 3 best selling artists.
+--26 Provide a query that shows the most purchased Media Type.
+--27 Provide a query that shows the number tracks purchased in all invoices that contain more than one genre.
