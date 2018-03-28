@@ -1,5 +1,5 @@
 --1 Provide a query showing Customers (just their full names, customer ID and country) who are not in the US.
-SELECT "CustomerId", "FirstName", "LastName", "Country" 
+SELECT "CustomerId", ("FirstName"||' '|| "LastName") AS "Full Name", "Country" 
 FROM "Customer" 
 WHERE Customer.Country IS NOT "USA";
 
@@ -9,7 +9,7 @@ FROM "Customer"
 WHERE Customer.Country IS "Brazil";
 
 --3 Provide a query showing the Invoices of customers who are from Brazil. The resultant table should show the customer's full name, Invoice ID, Date of the invoice and billing country.
-SELECT concat(Customer.FirstName, Customer.LastName), Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.BillingCountry
+SELECT (Customer.FirstName||' '|| Customer.LastName) AS "Full Name", Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.BillingCountry
 FROM Customer
 JOIN Invoice
 WHERE Customer.CustomerId = Invoice.CustomerId
@@ -24,11 +24,7 @@ WHERE e.title = "Sales Support Agent";
 SELECT DISTINCT i.BillingCountry FROM Invoice i;
 
 --6 Provide a query that shows the invoices associated with each sales agent. The resultant table should include the Sales Agent's full name.
-SELECT (Customer.FirstName || ' ' || Customer.LastName) AS "Full Name", Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.BillingCountry
-FROM Customer
-JOIN Invoice
-WHERE Customer.CustomerId = Invoice.CustomerId
-AND Customer.Country = "Brazil";
+
 
 --7 Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
 
