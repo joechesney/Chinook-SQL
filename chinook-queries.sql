@@ -9,7 +9,7 @@ FROM "Customer"
 WHERE Customer.Country IS "Brazil";
 
 -- Provide a query showing the Invoices of customers who are from Brazil. The resultant table should show the customer's full name, Invoice ID, Date of the invoice and billing country.
-SELECT Customer.FirstName, Customer.LastName, Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.BillingCountry
+SELECT concat(Customer.FirstName, Customer.LastName), Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.BillingCountry
 FROM Customer
 JOIN Invoice
 WHERE Customer.CustomerId = Invoice.CustomerId
@@ -24,9 +24,15 @@ WHERE e.title = "Sales Support Agent";
 SELECT DISTINCT i.BillingCountry FROM Invoice i;
 
 -- Provide a query that shows the invoices associated with each sales agent. The resultant table should include the Sales Agent's full name.
-
+SELECT (Customer.FirstName || ' ' || Customer.LastName) AS "Full Name", Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.BillingCountry
+FROM Customer
+JOIN Invoice
+WHERE Customer.CustomerId = Invoice.CustomerId
+AND Customer.Country = "Brazil";
 
 -- Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
+
+
 -- How many Invoices were there in 2009 and 2011? What are the respective total sales for each of those years?
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for Invoice ID 37.
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each Invoice. HINT: GROUP BY
