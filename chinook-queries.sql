@@ -74,7 +74,9 @@ JOIN Artist ar ON ar.ArtistId = al.ArtistId;
 
 
 --13 Provide a query that shows the # of invoices per country. HINT: GROUP BY
-
+SELECT COUNT(i.BillingCountry) AS "Number of Invoices",i.BillingCountry
+FROM Invoice i
+GROUP BY i.BillingCountry;
 
 --14 Provide a query that shows the total number of tracks in each playlist. The Playlist name should be included on the resultant table.
 --15 Provide a query that shows all the Tracks, but displays no IDs. The resultant table should include the Album name, Media type and Genre.
