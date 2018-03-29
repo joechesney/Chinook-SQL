@@ -149,7 +149,40 @@ GROUP BY i.BillingCountry
 ORDER BY ROUND(SUM(i.Total),2) DESC;
 
 --23 Provide a query that shows the most purchased track of 2013.
+SELECT COUNT(il.TrackId) AS "Purchases", t.Name
+FROM InvoiceLine il 
+JOIN Track t ON il.TrackId = t.TrackId
+JOIN Invoice i ON i.InvoiceId = il.InvoiceId
+WHERE i.InvoiceDate LIKE "2013%"
+GROUP BY il.TrackId
+ORDER BY "Purchases" DESC
+
 --24 Provide a query that shows the top 5 most purchased tracks over all.
+SELECT COUNT(il.TrackId) AS "Purchases", t.Name
+FROM InvoiceLine il 
+JOIN Track t ON il.TrackId = t.TrackId
+JOIN Invoice i ON i.InvoiceId = il.InvoiceId
+GROUP BY il.TrackId
+ORDER BY "Purchases" DESC LIMIT 5
+
 --25 Provide a query that shows the top 3 best selling artists.
+SELECT COUNT(il.TrackId) AS "Purchases", ar.Name
+FROM InvoiceLine il 
+JOIN Track t ON il.TrackId = t.TrackId
+JOIN Invoice i ON i.InvoiceId = il.InvoiceId
+JOIN Artist ar ON al.ArtistId = ar.ArtistId
+JOIN Album al ON al.AlbumId = t.AlbumId
+GROUP BY ar.Name
+ORDER BY "Purchases" DESC LIMIT 3
+
 --26 Provide a query that shows the most purchased Media Type.
---27 Provide a query that shows the number tracks purchased in all invoices that contain more than one genre.
+SELECT COUNT(il.InvoiceLineId) AS "Purchases", m.Name
+FROM InvoiceLine il 
+JOIN Invoice i ON i.InvoiceId = il.InvoiceId
+JOIN MediaType m ON m.MediaTypeId = t.MediaTypeId
+JOIN Track t ON t.TrackId = il.TrackId
+GROUP BY m.Name
+ORDER BY "Purchases" DESC LIMIT 1;
+
+--27 Provide a query that shows the number of tracks purchased in all invoices that contain more than one genre.
+
