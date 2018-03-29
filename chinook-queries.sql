@@ -166,7 +166,7 @@ GROUP BY il.TrackId
 ORDER BY "Purchases" DESC LIMIT 5
 
 --25 Provide a query that shows the top 3 best selling artists.
-SELECT COUNT(il.TrackId) AS "Purchases", ar.Name
+SELECT COUNT(il.TrackId) AS "Purchases", ROUND(SUM(i.Total),2) AS "Total Money",ar.Name
 FROM InvoiceLine il 
 JOIN Track t ON il.TrackId = t.TrackId
 JOIN Invoice i ON i.InvoiceId = il.InvoiceId
