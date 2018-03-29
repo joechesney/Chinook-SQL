@@ -108,7 +108,14 @@ JOIN Customer c ON c.SupportRepId = e.EmployeeId
 GROUP BY e.EmployeeId;
 
 --18 Which sales agent made the most in sales in 2009?
-
+SELECT ROUND(SUM(i.Total),2) AS "Sales Total", 
+       (e.FirstName||' '||e.LastName) AS "Sales Rep"
+FROM Employee e
+JOIN Customer c ON c.SupportRepId = e.EmployeeId
+JOIN Invoice i ON i.CustomerId = c.CustomerId
+WHERE i.InvoiceDate LIKE "2009%"
+GROUP BY e.EmployeeId
+ORDER BY ROUND(SUM(i.Total),2) DESC LIMIT 1;
 
 --19 Which sales agent made the most in sales in 2010?
 --20 Which sales agent made the most in sales over all?
