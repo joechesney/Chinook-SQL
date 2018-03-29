@@ -128,8 +128,26 @@ GROUP BY e.EmployeeId
 ORDER BY ROUND(SUM(i.Total),2) DESC LIMIT 1;
 
 --20 Which sales agent made the most in sales over all?
+SELECT ROUND(SUM(i.Total),2) AS "Total Sales", (e.FirstName||' '||e.LastName) AS "Sales Rep"
+FROM Employee e
+JOIN Invoice i ON i.CustomerId = c.CustomerId
+JOIN Customer c ON c.SupportRepId = e.EmployeeId
+GROUP BY e.EmployeeId
+ORDER BY ROUND(SUM(i.Total),2) DESC LIMIT 1;
+
 --21 Provide a query that shows the # of customers assigned to each sales agent.
+SELECT COUNT(e.EmployeeId) AS "Customers Assigned", 
+       (e.FirstName||' '||e.LastName) AS "Sales Rep"
+FROM Employee e
+JOIN Customer c ON c.SupportRepId = e.EmployeeId
+GROUP BY c.SupportRepId;
+
 --22 Provide a query that shows the total sales per country. Which country's customers spent the most?
+SELECT ROUND(SUM(i.Total),2) AS "Total Sales", i.BillingCountry
+FROM Invoice i
+GROUP BY i.BillingCountry
+ORDER BY ROUND(SUM(i.Total),2) DESC;
+
 --23 Provide a query that shows the most purchased track of 2013.
 --24 Provide a query that shows the top 5 most purchased tracks over all.
 --25 Provide a query that shows the top 3 best selling artists.
