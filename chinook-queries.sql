@@ -118,6 +118,15 @@ GROUP BY e.EmployeeId
 ORDER BY ROUND(SUM(i.Total),2) DESC LIMIT 1;
 
 --19 Which sales agent made the most in sales in 2010?
+SELECT ROUND(SUM(i.Total),2) AS "Sales Total", 
+       (e.FirstName||' '||e.LastName) AS "Sales Rep"
+FROM Employee e
+JOIN Customer c ON c.SupportRepId = e.EmployeeId
+JOIN Invoice i ON i.CustomerId = c.CustomerId
+WHERE i.InvoiceDate LIKE "2010%"
+GROUP BY e.EmployeeId
+ORDER BY ROUND(SUM(i.Total),2) DESC LIMIT 1;
+
 --20 Which sales agent made the most in sales over all?
 --21 Provide a query that shows the # of customers assigned to each sales agent.
 --22 Provide a query that shows the total sales per country. Which country's customers spent the most?
